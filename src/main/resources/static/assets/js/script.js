@@ -3,7 +3,7 @@ $(document).ready(function () {
   $(".toggle-password").click(function () {
     $(this).toggleClass("fa-eye fa-eye-slash");
     var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
+    if (input.attr("type") === "password") {
       input.attr("type", "text");
     } else {
       input.attr("type", "password");
@@ -23,6 +23,7 @@ $(document).ready(function () {
       }),
       success: function (response) {
         localStorage.setItem("jwt_token", response.token);
+        $("#loginForm")[0].reset();
         window.location.href = "pages/dashboard.html";
       },
       error: function (xhr, status, error) {
@@ -56,6 +57,7 @@ $(document).ready(function () {
       }),
       success: function (response) {
         alert("Registration successful! Please login.");
+        $("#registerForm")[0].reset();
         window.location.href = "../index.html";
       },
       error: function (xhr, status, error) {
